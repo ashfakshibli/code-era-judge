@@ -29,15 +29,15 @@
 
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu">
-                    <li class="header">HEADER</li>
+                    <li class="header">Dashboard</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="#"><span>Link</span></a></li>
-                    <li><a href="#"><span>Another Link</span></a></li>
+                    <li><a href={{ url('/show_contests')}}><span>Contests</span></a></li>
+                    <li><a href={{ url('/create_contest')}}><span>Create New Contest</span></a></li>
                     <li class="treeview">
-                        <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><span>Problems</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
+                            <li><a href="#">All Problems</a></li>
+                            <li><a href="#">Add New </a></li>
                         </ul>
                     </li>
                 </ul><!-- /.sidebar-menu -->

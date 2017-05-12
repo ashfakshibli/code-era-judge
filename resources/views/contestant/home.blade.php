@@ -59,7 +59,7 @@
         </div><!-- /.content-wrapper -->
 
         <!-- Main Footer -->
-        @include('contestant.partials.footer')
+    @include('contestant.partials.footer')
 
     </div><!-- ./wrapper -->
 

@@ -51,6 +51,13 @@ Route::group(['middleware' => 'admin_auth'], function() {
 	Route::get('/admin_home', function(){
 		return view('admin.home');
 	});
+
+	Route::get('create_contest', 'ContestController@create')->name('create_contest');
+	Route::post('create_contest', 'ContestController@store')->name('store_contest');
+
+	Route::get('show_contests', 'ContestController@show_all')->name('show_all');
+
+
 });
 
 

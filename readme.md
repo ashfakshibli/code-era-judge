@@ -1,10 +1,10 @@
-<p align="center">CodeCuet</p>
+<p align="center">CodeEra</p>
 
 
 
-## About CodeCuet
+## About CodeEra
 
-CodeCuet is a web contest platform
+CodeEra is a web contest platform
 
 - [For Individual University, College, School Contest Platform for there own management]
 - [Built with Laravel the best PHP framework] (https://laravel.com)

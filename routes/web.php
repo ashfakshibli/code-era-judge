@@ -22,13 +22,29 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //Admin Routes
-Route::get('/admin_register', 'AdminAuth\RegisterController@showRegistrationForm')->name('admin_register');
-Route::post('/admin_register', 'AdminAuth\RegisterController@register')->name('admin_store');
+//Logged in admin can't access or send request to this pages
 
-Route::get('/admin_login', 'AdminAuth\LoginController@showLoginForm')->name('admin_login');
+Route::group(['middleware' => 'admin_guest'], function() {
 
+	Route::get('admin_register', 'AdminAuth\RegisterController@showRegistrationForm')->name('admin_register');
+	Route::post('admin_register', 'AdminAuth\RegisterController@register')->name('admin_store');
 
+	Route::get('admin_login', 'AdminAuth\LoginController@showLoginForm')->name('admin_login_form');
+	Route::post('admin_login', 'AdminAuth\LoginController@login')->name('admin_login');
 
-Route::get('/admin_home', function(){
-	return view('admin.home');
 });
+
+//only logged in admin can see this pages
+Route::group(['middleware' => 'admin_auth'], function() {
+
+	Route::post('admin_logout', 'AdminAuth\LoginController@logout')->name('admin_logout');
+
+	Route::get('/admin_home', function(){
+		return view('admin.home');
+	});
+});
+
+
+
+
+

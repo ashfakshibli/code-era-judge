@@ -8,17 +8,18 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'CodeCuet Admin') }}</title>
+    <title>{{ config('app.name', 'CodeCuet') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
+     <script>
+        window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
-        ]) !!};
+        ]); ?>
     </script>
+    
 </head>
 <body>
     <div id="app">
@@ -36,8 +37,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'CodeCuet Admin') }}
-                        {{-- CodeCuet --}}
+                        {{ config('app.name', 'CodeCuet') }}
                     </a>
                 </div>
 
@@ -51,8 +51,10 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guard('admin')->guest())
-                            <li><a href="{{ route('admin_login') }}">Admin Login</a></li>
-                            <li><a href="{{ route('admin_register') }}">Admin Register</a></li>
+
+
+                            <li><a href="{{ url('/admin_login') }}">Admin Login</a></li>
+                            <li><a href="{{ url('/admin_register') }}">Admin Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -61,13 +63,13 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
+                                        <a href="{{ url('/admin_logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ url('/admin_logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>

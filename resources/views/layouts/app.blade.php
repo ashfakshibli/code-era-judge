@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -43,6 +43,10 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="#">Problems</a></li>
+                        <li><a href="#">Contests</a></li>
+                    </ul>
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>

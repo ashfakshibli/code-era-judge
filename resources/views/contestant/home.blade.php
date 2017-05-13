@@ -6,7 +6,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>CodeCuet | Dashboard</title>
+        <title>CodeEra | Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="{{ asset("/vendor/adminlte/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="skin-blue">
+    <body class="skin-blue sidebar-mini">
     <div class="wrapper">
 
     @include('contestant.partials.header')
@@ -38,24 +38,7 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1>
-                    Page Header
-                    <small>Optional description</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                    <li class="active">Here</li>
-                </ol>
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-
-                <!-- Your Page Content Here -->
-
-            </section><!-- /.content -->
+            @yield('content')
         </div><!-- /.content-wrapper -->
 
         <!-- Main Footer -->
@@ -75,5 +58,8 @@
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience -->
+
+    <script src="{{ asset ("custom/js/sidebar_navigate.js") }}"></script>
+
     </body>
 </html>

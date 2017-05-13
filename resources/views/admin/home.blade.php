@@ -6,7 +6,7 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>CodeCuet Admin | Dashboard</title>
+        <title>CodeEra Admin | Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- Bootstrap 3.3.2 -->
         <link href="{{ asset("/vendor/adminlte/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
@@ -29,7 +29,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body class="skin-yellow">
+    <body class="skin-yellow sidebar-mini">
     <div class="wrapper">
 
     @include('admin.partials.header')
@@ -59,5 +59,8 @@
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience -->
+    <script src="{{ asset ("custom/js/sidebar_navigate.js") }}"></script>
+
+    @yield('custom_js')
     </body>
 </html>

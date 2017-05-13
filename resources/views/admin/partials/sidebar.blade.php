@@ -31,10 +31,10 @@
                 <ul class="sidebar-menu">
                     <li class="header">Dashboard</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li><a href={{ url('/show_contests')}}><span>Contests</span></a></li>
-                    <li><a href={{ url('/create_contest')}}><span>Create New Contest</span></a></li>
+                    <li><a href={{ url('/show_contests')}}><i class="fa fa-space-shuttle"></i><span>Contests</span></a></li>
+                    <li><a href={{ url('/create_contest')}}><i class="fa fa-edit"></i><span>Create New Contest</span></a></li>
                     <li class="treeview">
-                        <a href="#"><span>Problems</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <a href="#"><i class="fa  fa-list"></i><span>Problems</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                             <li><a href="#">All Problems</a></li>
                             <li><a href="#">Add New </a></li>

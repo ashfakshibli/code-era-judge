@@ -57,6 +57,9 @@ Route::group(['middleware' => 'admin_auth'], function() {
 
 	Route::get('show_contests', 'ContestController@show_all')->name('show_all');
 
+	Route::get('lte', 'ContestController@lte')->name('lte');
+
+
 
 });
 

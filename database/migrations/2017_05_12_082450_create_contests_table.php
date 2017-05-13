@@ -16,11 +16,21 @@ class CreateContestsTable extends Migration
         Schema::create('contests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->timestamp('start_time')->nullable();;
             $table->timestamp('end_time')->nullable();;
             $table->timestamps();
         });
+
+        //pivot table
+         Schema::create('user_contest', function (Blueprint $table) {
+            $table->integer('user_id');
+            $table->integer('contest_id');
+            $table->primary(['user_id','contest_id']);
+           
+        });
+
+
     }
 
     /**

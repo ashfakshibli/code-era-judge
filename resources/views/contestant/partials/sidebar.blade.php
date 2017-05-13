@@ -12,7 +12,7 @@
                     <div class="pull-left info">
                         <p>{{ Auth::user()->name }}</p>
                         <!-- Status -->
-                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        {{-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> --}}
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@
                 <ul class="sidebar-menu">
                     <li class="header">HEADER</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li ><a href="#"><i class="fa fa-user"></i><span>My Profile</span></a></li>
+                    <li ><a href="/contestant/profile"><i class="fa fa-user"></i><span>My Profile</span></a></li>
                     <li class="treeview">
                         <a href="#"><i class="fa fa-list"></i><span>Contests</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">

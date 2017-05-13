@@ -4,5 +4,5 @@
                 Contest Redefined
             </div>
             <!-- Default to the left -->
-            <strong>Copyright © 2015 <a href="#">Code Cuet</a>.</strong> All rights reserved.
+            <strong>Copyright © 2017 <a href="#">CodeEra</a>.</strong> All rights reserved.
         </footer>

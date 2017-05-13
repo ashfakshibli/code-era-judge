@@ -2,7 +2,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="/home" class="logo">
+            <a href="/admin_home" class="logo">
                 <span class="logo-mini"><b>C</b>A</span>
                   <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>CodeEra</b> Admin</span>

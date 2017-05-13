@@ -21,6 +21,7 @@
               apply the skin class to the body tag so the changes take effect.
         -->
         <link href="{{ asset("/vendor/adminlte/dist/css/skins/skin-yellow.min.css")}}" rel="stylesheet" type="text/css" />
+        @yield('custom_css')
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,6 +38,11 @@
        
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+        
+        @include('layouts.alert')
+        @include('layouts.errors')
+
+
             <!-- Content Header (Page header) -->
                 @yield('content')
             
@@ -59,6 +65,9 @@
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience -->
+    <script src="{{ asset ("/vendor/adminlte/plugins/slimScroll/jquery.slimscroll.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset ("/vendor/adminlte/plugins/fastclick/fastclick.min.js") }}" type="text/javascript"></script>
+
     <script src="{{ asset ("custom/js/sidebar_navigate.js") }}"></script>
 
     @yield('custom_js')

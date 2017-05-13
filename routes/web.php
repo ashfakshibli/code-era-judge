@@ -18,6 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contestant/profile', 'HomeController@profile')->name('profile');
+
+
+
+
 
 
 
@@ -55,7 +60,10 @@ Route::group(['middleware' => 'admin_auth'], function() {
 	Route::get('create_contest', 'ContestController@create')->name('create_contest');
 	Route::post('create_contest', 'ContestController@store')->name('store_contest');
 
-	Route::get('show_contests', 'ContestController@show_all')->name('show_all');
+	Route::get('create_problem', 'ProblemController@create')->name('create_problem');
+	Route::post('create_problem', 'ProblemController@store')->name('store_problem');
+
+	Route::get('admin/contests', 'ContestController@show_all')->name('show_all');
 
 	Route::get('lte', 'ContestController@lte')->name('lte');
 

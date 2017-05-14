@@ -96,7 +96,7 @@ class ContestController extends Controller
      */
     public function show_all()
     {
-        return view('contest.all_contests');
+        return view('contest.admin_contest_list');
     }
 
 

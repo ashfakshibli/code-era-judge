@@ -57,13 +57,22 @@ Route::group(['middleware' => 'admin_auth'], function() {
 		return view('admin.home');
 	});
 
-	Route::get('create_contest', 'ContestController@create')->name('create_contest');
-	Route::post('create_contest', 'ContestController@store')->name('store_contest');
-
+	
+	//Problems route
 	Route::get('create_problem', 'ProblemController@create')->name('create_problem');
 	Route::post('create_problem', 'ProblemController@store')->name('store_problem');
+	Route::get('problem/add/{contest_id?}', 'ProblemController@add_problem')->name('show_all');
 
+	//Contests route
+	Route::get('create_contest', 'ContestController@create')->name('create_contest');
+	Route::post('create_contest', 'ContestController@store')->name('store_contest');
 	Route::get('admin/contests', 'ContestController@show_all')->name('show_all');
+	Route::get('contest/edit/{contest_id}', 'ContestController@edit')->name('edit_contest');
+	Route::post('contest/update/{contest_id}', 'ContestController@update')->name('update_contest');
+	Route::get('contest/delete/{contest_id}', 'ContestController@delete')->name('delete_contest');
+
+
+
 
 	Route::get('lte', 'ContestController@lte')->name('lte');
 

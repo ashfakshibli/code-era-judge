@@ -14,9 +14,9 @@ class ContestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Contest $contests)
     {
-        //
+        $contests->all();
     }
 
     /**
@@ -94,9 +94,11 @@ class ContestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show_all()
+    public function show_all(Contest $contest)
     {
-        return view('contest.admin_contest_list');
+        $contests = $contest->all();
+     
+        return view('contest.admin_contest_list', compact('contests'));
     }
 
 
@@ -109,7 +111,10 @@ class ContestController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contest = Contest::findOrFail($id);
+
+        return view('contest.edit', compact('contest'));
+        
     }
 
     /**
@@ -121,7 +126,7 @@ class ContestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

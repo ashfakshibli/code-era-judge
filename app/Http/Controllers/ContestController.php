@@ -19,6 +19,10 @@ class ContestController extends Controller
         $contests->all();
     }
 
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,6 +33,12 @@ class ContestController extends Controller
         return view('contest.create_contest');
     }
 
+
+
+
+
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -37,22 +47,34 @@ class ContestController extends Controller
      */
     public function store(Request $request)
     {
-        $inputs = $request->all();
-        $inputs['start_end_time'] = explode('-', $inputs['start_end_time']);
-        $inputs['start_time'] = Carbon::createFromFormat('d/m/Y H:i', trim($inputs['start_end_time'][0]))->toDateTimeString();
-
-        $inputs['end_time'] = Carbon::createFromFormat('d/m/Y H:i', trim($inputs['start_end_time'][1]))->toDateTimeString();
-
-
+        $inputs = $this->timeSeparator($request->all());
+        
         $this->validator($inputs)->validate();
 
         $this->create_data($inputs);
 
-        session()->flash('message', 'Please add Problems now.');
-        session()->flash('alert-class', 'alert-success');
-        session()->flash('alert-heading', 'Contest Created!');
+        $this->showMessage('alert-success', 'Contest created!', 'The contest has been created. Add problems now.');
 
         return redirect('/admin_home');
+    }
+
+
+    public function showMessage($alertClass='alert-success', $heading, $message='' )
+    {
+        session()->flash('message', $message );
+        session()->flash('alert-class', $alertClass);
+        session()->flash('alert-heading', $heading);
+    }
+
+
+    public function timeSeparator(array $array)
+    {
+        $inputs = $array;
+        $inputs['start_end_time'] = explode('-', $inputs['start_end_time']);
+        $inputs['start_time'] = Carbon::createFromFormat('d/m/Y H:i', trim($inputs['start_end_time'][0]))->toDateTimeString();
+
+        $inputs['end_time'] = Carbon::createFromFormat('d/m/Y H:i', trim($inputs['start_end_time'][1]))->toDateTimeString();    
+        return $inputs;    
     }
 
 
@@ -76,6 +98,12 @@ class ContestController extends Controller
             ]);
     }
 
+
+
+
+
+
+
     /**
      * Display the specified resource.
      *
@@ -86,6 +114,13 @@ class ContestController extends Controller
     {
         //
     }
+
+
+
+
+
+
+
 
 
     /**
@@ -103,6 +138,11 @@ class ContestController extends Controller
 
 
 
+
+
+
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -117,6 +157,12 @@ class ContestController extends Controller
         
     }
 
+
+
+
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -126,7 +172,19 @@ class ContestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $contest = Contest::findOrFail($id);
+
+        $inputs = $this->timeSeparator($request->all()); 
+
+        $this->validator($inputs)->validate();
+
+        $contest->fill($inputs)->save();
+
+
+        $this->showMessage('alert-success','Contest updated!');
+
+        return redirect('/admin/contests');
+
     }
 
     /**

@@ -26,7 +26,7 @@
         <!-- /.box-header -->
         <div class="box-body">
 
-        <form method="POST" action={{ url('/contest/update'.$contest->id) }}>
+        <form method="POST" action={{ url('/contest/update/'.$contest->id) }}>
         {{ csrf_field() }}
           <div class="row">
             <div class="col-md-6">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Problem;
 
 class HomeController extends Controller
 {
@@ -30,5 +31,17 @@ class HomeController extends Controller
     public function profile()
     {
         return view('contestant.profile');
+    }
+
+    public function contests()
+    {
+        return view('contestant.all_contests');
+    }
+
+    public function problems(Problem $problem)
+    {
+        $problems =  $problem->with('Contest')->get();
+
+        return view('problem.problems', compact('problems'));
     }
 }

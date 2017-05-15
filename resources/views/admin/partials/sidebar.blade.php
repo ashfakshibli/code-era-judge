@@ -31,13 +31,15 @@
                 <ul class="sidebar-menu">
                     <li class="header">Dashboard</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li><a href={{ url('/admin/contests')}}><i class="fa fa-space-shuttle"></i><span>Contests</span></a></li>
-                    <li><a href={{ url('/create_contest')}}><i class="fa fa-edit"></i><span>Create New Contest</span></a></li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa  fa-list"></i><span>Problems</span> <i class="fa fa-angle-left pull-right"></i></a>
+                    <li><a href={{ url('/admin/contests')}}><i class="fa fa-space-shuttle"></i><span> Contests</span></a></li>
+                    <li><a href={{ url('/create_contest')}}><i class="fa fa-edit"></i><span> Create New Contest</span></a></li>
+                    {{-- <li><a href={{ url('/admin/problems')}}><i class="fa fa-edit"></i><span>Problems</span></a></li> --}}
+                    {{-- <li><a href={{ url('/problem/add/')}}><i class="fa fa-edit"></i><span>Add New Problem</span></a></li> --}}
+                    <li class="treeview ">
+                        <a href="#"><i class="fa fa-list"></i><span> Problems</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
-                            <li><a href={{ url('/problems')}}>All Problems</a></li>
-                            <li><a href={{ url('/create_problem')}}>Add New </a></li>
+                            <li><a href={{ url('/admin/problems')}}><i class="fa fa-list"></i><span> All Problems</span></a></li>
+                            <li><a href={{ url('/problem/add/')}}><i class="fa fa-edit"></i><span> Add New</span></a></li>
                         </ul>
                     </li>
                 </ul><!-- /.sidebar-menu -->

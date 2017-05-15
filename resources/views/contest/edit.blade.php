@@ -59,7 +59,7 @@
               <div class="form-group">
                 <label>Contest Details:</label>
              
-                  <textarea value={{ $contest->description }} name="description" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                  <textarea value="{{ $contest->description }}" name="description" class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
             
               </div>
               <!-- /.form group -->
@@ -70,7 +70,7 @@
           <!-- /.row -->
             <div class="box-footer">
                 <button type="submit" class="btn bg-olive btn-flat">Update</button>
-                <button type="reset" class="btn bg-orange btn-flat">Cancel</button>
+                <a href={{ url('/admin/contests')}} type="reset" class="btn bg-orange btn-flat">Cancel</a>
             </div>
         </form>
         </div>
@@ -89,32 +89,31 @@
 @section('custom_js')
 
     <script src="{{ asset ("/vendor/adminlte/plugins/daterangepicker/moment.min.js") }}"></script>
-    <script src="{{ asset ("/vendor/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js") }}"></script>
+    <script src="{{ asset ("/vendor/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js") }}"></script>
     <script src="{{ asset ("/vendor/adminlte/plugins/daterangepicker/daterangepicker.js") }}"></script>
 
 
 
     <script>
-    $(function () {
+    $(document).ready(function() {
 
-    //Date range picker
-    $('#reservation').daterangepicker();
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-        timePicker: true, 
-        timePickerIncrement: 30, 
-        locale: {
-            format: 'DD/MM/YYYY H:mm'
-        }
-        });
+          //Date range picker
+          $('#reservation').daterangepicker();
+          //Date range picker with time picker
+          $('#reservationtime').daterangepicker({
+              timePicker: true, 
+              timePickerIncrement: 30, 
+              locale: {
+                  format: 'DD/MM/YYYY H:mm'
+              }
+              });
 
-    $(".textarea").wysihtml5({
-          toolbar: {
-            "fa": true
-          }
 
-      });
-    $(".textarea").html('{{ $contest->description }}');
+          $(".textarea").wysihtml5();
+          var txt = '{{ $contest->description }}';
+          $(".textarea").html(txt);
+
+
 
 
     });

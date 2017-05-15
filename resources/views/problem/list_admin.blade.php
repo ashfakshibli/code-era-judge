@@ -1,18 +1,14 @@
 @extends('admin.home')
-
-
-
 @section('custom_css')
     <link href="{{ asset("/vendor/adminlte/plugins/datatables/dataTables.bootstrap.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("/vendor/adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css")}}" rel="stylesheet" type="text/css" />
-
 
 @endsection
 
 @section('content')
 	<section class="content-header">
                 <h1>
-                    All Contests
+                    All Problems
                    
                 </h1>
                 <ol class="breadcrumb">
@@ -31,25 +27,26 @@
                           <table id="example2" class="table table-bordered table-hover text-center">
                             <thead>
                             <tr>
-                              <th style="width: 45%">Contest Title</th>
-                              <th style="width: 15%">Start Time</th>
-                              <th style="width: 15%">Duration</th>
+                              <th style="width: 25%">Problem ID</th>
+                              <th style="width: 35%">Problem Title</th>
+                              <th style="width: 15%">Belongs To</th>
                               <th style="width: 25%">Options</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            @foreach ($contests as $contest)
+                            @foreach ($problems as $problem)
 
                                 <tr>
-                                  <td> <a href={{ url('contests/'.$contest->id) }}>{{ $contest->title }}</a></td>
-                                  <td> {{ Carbon\Carbon::parse($contest->start_time)->format('d-F-Y  H:i') }}</td>
-                                  <td> {{ Carbon\Carbon::parse($contest->start_time)->diffInHours(Carbon\Carbon::parse($contest->end_time)) }} hour(s)</td>
+                                  <td> {{ $problem->id  }}</td>
+                                  <td> <a href={{ url('problems/'.$problem->id) }}>{{ $problem->title }}</a></td>
+                                  
+                                  <td><a href="{{url('/admin/contests/'.$problem->contest['id'])}}"> {{ $problem->contest['title'] }}</a></td>
                                   <td>
-                                    <a href={{ url('problem/add/'.$contest->id)}} class="btn bg-olive btn-flat tbl">Add Problem</a>
-                                    <a href={{ url('contest/edit/'.$contest->id)}} class="btn bg-orange btn-flat tbl">Edit</a>
+                            
+                                    <a href={{ url('problem/edit/'.$problem->id)}} class="btn bg-orange btn-flat tbl">Edit</a>
 
-                                    <button type="button" class="btn bg-red btn-flat tbl confirmation" data-toggle="modal" data-target="#inputModal" data-url="{{ url('contest/destroy/'.$contest->id)}}">Delete</button>
+                                    <button type="button" class="btn bg-red btn-flat tbl confirmation" data-toggle="modal" data-target="#inputModal" data-url="{{ url('problem/destroy/'.$problem->id)}}">Delete</button>
                                   
                                   </td>
                                 </tr>
@@ -59,9 +56,9 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                              <th style="width: 35%">Contest Title</th>
-                              <th style="width: 20%">Start Time</th>
-                              <th style="width: 20%">End Time</th>
+                              <th style="width: 25%">Problem ID</th>
+                              <th style="width: 35%">Problem Title</th>
+                              <th style="width: 15%">Belongs To</th>
                               <th style="width: 25%">Options</th>
                             </tr>
                             </tfoot>
@@ -89,7 +86,7 @@
                                 <h4 class="modal-title">Confirmation</h4>
                               </div>
                               <div class="modal-body">
-                                <p>Are you want to delete this contest?</p>
+                                <p>Are you sure to delete this problem?</p>
 
                               </div>
                               <div class="modal-footer">

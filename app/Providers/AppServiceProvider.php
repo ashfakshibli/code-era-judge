@@ -17,6 +17,14 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+
+        view()->composer('*', function($view){
+            $contests = (new \App\Contest)->all();
+            // $problems = \App\Problem::has('contes')->pluck('name');
+            $view->with(compact('contests'));
+
+        });
+
     }
 
     /**

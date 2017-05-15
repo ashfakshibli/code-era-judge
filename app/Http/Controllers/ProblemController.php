@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Validation\Validator;
 use App\Problem;
+use App\Contest;
+use App\Http\Controllers\ContestController;
 
 class ProblemController extends Controller
 {
@@ -22,9 +25,14 @@ class ProblemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($contestId = '')
     {
-        return view('problem.create_problem');
+        if(!empty($contestId)){
+            $addToContest = Contest::find($contestId);
+            return view('problem.create_problem', compact('addToContest'));
+        }
+        else return view('problem.create_problem');
+        
     }
 
     /**
@@ -45,13 +53,12 @@ class ProblemController extends Controller
 
         Problem::create($request->all());
 
-        session()->flash('message', 'Problem added to the contest');
-        session()->flash('alert-class', 'alert-success');
-        session()->flash('alert-heading', 'Added!');
+        ContestController::showMessage('alert-success','Added!', 'Problem added to the contest' );
 
         return redirect('/create_problem');
 
     }
+
 
     /**
      * Display the specified resource.
@@ -61,7 +68,16 @@ class ProblemController extends Controller
      */
     public function show($id)
     {
-        //
+        $problem = Problem::findOrFail($id);
+        return view('contest.show', compact('problem'));
+    }
+
+
+    public function show_all(Problem $problem)
+    {
+        $problems =  $problem->with('Contest')->get();
+
+        return view('problem.list_admin', compact('problems'));
     }
 
     /**
@@ -72,7 +88,9 @@ class ProblemController extends Controller
      */
     public function edit($id)
     {
-        //
+        $problem = Problem::findOrFail($id);
+
+        return view('problem.edit', compact('problem'));
     }
 
     /**
@@ -84,7 +102,22 @@ class ProblemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $problem = Problem::findOrFail($id);
+
+        $this->validate(request(), [
+                'title' => 'required',
+                'contest_id' => 'required',
+                'description' => 'required',
+                'input' => 'required',
+                'output' => 'required',
+            ]);
+
+        $problem->save();
+
+        ContestController::showMessage('alert-success','Updated!', 'Problem has been updated' );
+
+        return redirect('/admin/problems');
+
     }
 
     /**
@@ -95,6 +128,18 @@ class ProblemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $problem = Problem::findOrFail($id);
+        $problem->delete();
+
+        ContestController::showMessage('alert-success','Deleted!', 'Problem has been deleted successfully' );
+
+        return redirect('/admin/problems');
+
+
+
+
+        
     }
+
+    
 }

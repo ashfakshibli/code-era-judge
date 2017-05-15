@@ -16,7 +16,7 @@ class ContestController extends Controller
      */
     public function index(Contest $contests)
     {
-        $contests->all();
+        return view('contest.all_contests');
     }
 
 
@@ -35,10 +35,6 @@ class ContestController extends Controller
 
 
 
-
-
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -48,18 +44,20 @@ class ContestController extends Controller
     public function store(Request $request)
     {
         $inputs = $this->timeSeparator($request->all());
+
+        $inputs['description'] = preg_replace('/(\>)\s*(\<)/m', '$1$2', $inputs['description']);
         
         $this->validator($inputs)->validate();
 
-        $this->create_data($inputs);
+        $id = $this->create_data($inputs);
 
         $this->showMessage('alert-success', 'Contest created!', 'The contest has been created. Add problems now.');
 
-        return redirect('/admin_home');
+        return redirect('/problem/add/'.$id);
     }
 
 
-    public function showMessage($alertClass='alert-success', $heading, $message='' )
+    public static function showMessage($alertClass='alert-success', $heading, $message='' )
     {
         session()->flash('message', $message );
         session()->flash('alert-class', $alertClass);
@@ -95,7 +93,7 @@ class ContestController extends Controller
             'description' => $data['description'],
             'start_time' => $data['start_time'], 
             'end_time' => $data['end_time'], 
-            ]);
+            ])->id;
     }
 
 
@@ -112,7 +110,8 @@ class ContestController extends Controller
      */
     public function show($id)
     {
-        //
+        $contest = Contest::findOrFail($id);
+        return view('contest.show', compact('contest'));
     }
 
 
@@ -195,7 +194,16 @@ class ContestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contest = Contest::findOrFail($id);
+
+        $title = $contest->title;
+
+        $contest->delete();
+
+        $this->showMessage('alert-success', 'Deleted', 'You have deleted contest "'.$title.'"');
+
+        return redirect('/admin/contests');
+        
     }
 
 }

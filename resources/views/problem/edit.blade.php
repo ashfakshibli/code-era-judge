@@ -1,5 +1,5 @@
 @extends('admin.home')
-
+{{-- {{dd($problem)}} --}}
 @section('custom_css')
     <link href="{{ asset("/vendor/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("/vendor/adminlte/plugins/daterangepicker/daterangepicker.css")}}" rel="stylesheet" type="text/css" />
@@ -9,10 +9,7 @@
 @section('content')
 	<section class="content-header">
                 <h1>
-                @if(isset($addToContest))
-                  Add Problem to "{{ $addToContest->title }}"
-                @else Create New Problem
-                @endif
+                    Edit Problem
                     <small></small>
                 </h1>
                 <ol class="breadcrumb">
@@ -29,14 +26,14 @@
 
         <!-- /.box-header -->
         <div class="box-body">
-        <form method="POST" action="/problem/add">
+        <form method="POST" action={{url("/problem/update/".$problem->id)}}>
           {{ csrf_field() }}
 
           <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Problem Title</label>
-                  <input name="title" type="text" class="form-control pull-right" style="width: 100%;" placeholder="Give a title">
+                  <input value="{{ $problem->title }}" name="title" type="text" class="form-control pull-right" style="width: 100%;" placeholder="Give a title">
                   </input>
                 </div>
               </div>
@@ -48,12 +45,7 @@
                   <select name="contest_id" class="form-control" data-placeholder="Select a Contest" style="width: 100%;">
 
                   @foreach($contests as $contest)
-                    @if(isset($addToContest) && $contest==$addToContest)
-                      <option selected="selected" value="{{ $contest->id }}">{{ $contest->title }}</option>
-                    @else
-                      <option value="{{ $contest->id }}">{{ $contest->title }}</option>
-                    @endif
-
+                    <option value="{{ $contest->id }}">{{ $contest->title }}</option>
                   @endforeach
 
                   </select>
@@ -65,7 +57,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Problem Description:</label>
-                    <textarea name="description" class="textarea description" placeholder="Place some Description" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <textarea  name="description" class="textarea description" placeholder="Place some Description" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $problem->description }}</textarea>
                 </div>
                 <!-- /.form group -->
               </div>
@@ -74,7 +66,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Sample Input:</label>
-                    <textarea name="input" class="textarea" placeholder="Place Sample Input" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <textarea  name="input" class="textarea" placeholder="Place Sample Input" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $problem->input }}</textarea>
                 </div>
                 <!-- /.form group -->
               </div>
@@ -83,7 +75,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Sample Output:</label>
-                    <textarea name="output" class="textarea" placeholder="Place Sample Output" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <textarea name="output" class="textarea" placeholder="Place Sample Output" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $problem->output }}</textarea>
                 </div>
                 <!-- /.form group -->
               </div>
@@ -92,8 +84,8 @@
             <!-- /.row -->
 
             <div class="box-footer">
-                <button type="submit" class="btn bg-olive btn-flat ">Create</button>
-                <button type="reset" class="btn bg-orange btn-flat ">Cancel</button>
+                <button type="submit" class="btn bg-olive btn-flat ">Update</button>
+                <a href={{url('/admin/problems')}} type="reset" class="btn bg-orange btn-flat ">Cancel</a>
             </div>
 
             </div>
@@ -126,6 +118,7 @@
     $(function () {
 
     $(".description").wysihtml5();
+
 
   });
     </script>

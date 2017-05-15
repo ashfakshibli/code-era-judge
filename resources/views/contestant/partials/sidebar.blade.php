@@ -31,12 +31,12 @@
                 <ul class="sidebar-menu">
                     <li class="header">HEADER</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li ><a href="/contestant/profile"><i class="fa fa-user"></i><span>My Profile</span></a></li>
+                    <li ><a href="/contestant/profile"><i class="fa fa-user"></i><span>Profile</span></a></li>
                     <li class="treeview">
                         <a href="#"><i class="fa fa-list"></i><span>Contests</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
-                            <li><a href="#">All Contests</a></li>
-                            <li><a href="#">Enrolled Contests</a></li>
+                            <li><a href="/contestant/contests">All Contests</a></li>
+                            <li><a href="/contest/enrolled">Enrolled Contests</a></li>
                         </ul>
                     </li>
                 </ul><!-- /.sidebar-menu -->

@@ -21,6 +21,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contestant/profile', 'HomeController@profile')->name('profile');
 
 
+Route::get('contestant/contests', 'HomeController@contests');
+Route::get('/contests', 'ContestController@index');
+Route::get('/problems', 'HomeController@problems');
+
+
+
+Route::get('/problem/{id}', 'ProblemController@show');
+Route::get('/contest/{id}', 'ContestController@show');
+
+
+
 
 
 
@@ -59,9 +70,12 @@ Route::group(['middleware' => 'admin_auth'], function() {
 
 	
 	//Problems route
-	Route::get('create_problem', 'ProblemController@create')->name('create_problem');
-	Route::post('create_problem', 'ProblemController@store')->name('store_problem');
-	Route::get('problem/add/{contest_id?}', 'ProblemController@add_problem')->name('show_all');
+	Route::get('problem/add/{contest_id?}', 'ProblemController@create')->name('create_problem');
+	Route::post('problem/add', 'ProblemController@store')->name('store_problem');
+	Route::get('admin/problems', 'ProblemController@show_all')->name('show_problem');
+	Route::get('problem/edit/{problem_id}', 'ProblemController@edit')->name('edit_problem');
+	Route::post('problem/update/{problem_id}', 'ProblemController@update')->name('update_problem');
+	Route::get('problem/destroy/{problem_id}', 'ProblemController@destroy')->name('delete_problem');
 
 	//Contests route
 	Route::get('create_contest', 'ContestController@create')->name('create_contest');
@@ -69,7 +83,7 @@ Route::group(['middleware' => 'admin_auth'], function() {
 	Route::get('admin/contests', 'ContestController@show_all')->name('show_all');
 	Route::get('contest/edit/{contest_id}', 'ContestController@edit')->name('edit_contest');
 	Route::post('contest/update/{contest_id}', 'ContestController@update')->name('update_contest');
-	Route::get('contest/delete/{contest_id}', 'ContestController@delete')->name('delete_contest');
+	Route::get('contest/destroy/{contest_id}', 'ContestController@destroy')->name('delete_contest');
 
 
 

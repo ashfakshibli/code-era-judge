@@ -13,5 +13,12 @@ class Problem extends Model
     protected $hidden = [
         'contest_id',
     ];
+
+    public function contest()
+    {
+    	return $this->belongsTo(Contest::class);
+    }
+
+
 	
 }

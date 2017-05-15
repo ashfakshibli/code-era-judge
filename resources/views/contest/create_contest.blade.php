@@ -69,8 +69,8 @@
           </div>
           <!-- /.row -->
             <div class="box-footer">
-                <button type="submit" class="btn bg-olive btn-flat margin">Create</button>
-                <button type="reset" class="btn bg-orange btn-flat margin">Cancel</button>
+                <button type="submit" class="btn bg-olive btn-flat">Create</button>
+                <button type="reset" class="btn bg-orange btn-flat">Cancel</button>
             </div>
         </form>
         </div>

@@ -29,14 +29,14 @@
 @endsection
 
 @section('content')
-
+<div class="container">
   <!-- Main content -->
     <section class="content">
 
       <!-- SELECT2 EXAMPLE -->
-      <div class="box box-warning">
+      <div class="box box-danger box-solid">
         <div class="box-header with-border">
-          <h3 class="box-title">Problem No. <span class="pull-right badge bg-orange">1231</span></h3>
+          <h3 class="box-title">Problem ID #<span class="pull-right badge bg-green">{{ $problem->id }}</span></h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -44,7 +44,7 @@
 
             <div class="col-md-12">
               <div class="box-body">
-                <label>Problem Title:</label> name lorem lorem
+                <h3>{{ $problem->title }}</h3>
               </div>
               <!-- /.box-body -->
             </div>
@@ -53,28 +53,19 @@
             <div class="col-md-12">
               <div class="box-body">
                 <label>Contest Link:</label>
-                <a href="#">Contest link for this problem</a>
+                <a href="#">{{ $problem->contest['title'] }}</a>
               </div>
               <!-- /.box-body -->
             </div>
             <!-- /.col-->
 
             <div class="col-md-12">
-            <div class="box box-warning">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <label>Problem Description</label>
+                </div>
                 <div class="box-body">
-                  <label>Problem Description:</label>
-                  <p style="text-align: justify;">lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem 
-                  ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <p style="text-align: justify;">{!! $problem->description !!}</p>
                 </div>
               </div>
               <!-- /.box-body -->
@@ -82,15 +73,12 @@
             <!-- /.col-->
 
             <div class="col-md-6">
-              <div class="box box-warning">
+              <div class="box box-success box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Sample Input:</h3>
+                  <h3 class="box-title">Sample Input</h3>
                 </div>
                 <div class="box-body">  
-                  <p>a) sgadkfjsdh</p><br>
-                  <p>b) sgadkfjsdh</p><br>
-                  <p>c) sgadkfjsdh</p><br>
-                  <p>d) sgadkfjsdh</p><br>
+                  {!! $problem->input !!}
                 </div>
               </div>
               <!-- /.box-body -->
@@ -98,15 +86,12 @@
             <!-- /.col-->
 
             <div class="col-md-6">
-              <div class="box box-warning">
+              <div class="box box-success box-solid">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Sample Output:</h3>
+                  <h3 class="box-title">Sample Output</h3>
                 </div>
                 <div class="box-body">  
-                  <p>a) sgadkfjsdh</p><br>
-                  <p>b) sgadkfjsdh</p><br>
-                  <p>c) sgadkfjsdh</p><br>
-                  <p>d) sgadkfjsdh</p><br>
+                  {!! $problem->output !!}
                 </div>
               </div>
               <!-- /.box-body -->
@@ -142,7 +127,7 @@
 
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h3 class="modal-title">Codde Submission</h3>
+            <h3 class="modal-title">Code Submission</h3>
           </div>
 
           <div class="modal-body">
@@ -186,7 +171,6 @@
       </form> 
     </div>
   </div>
-
 @endsection
 
 
@@ -218,4 +202,4 @@
   });
   </script>
 
-  @endsection
+@endsection

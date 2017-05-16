@@ -1,6 +1,6 @@
-<div class="box bg-olive box-solid">
+<div class="box box-solid">
     		<div class="box-header with-border  text-center">
-    			<h3 class="box-title">Brought to By</h3>
+    			<h3 class="box-title">Brought to you By</h3>
 		    		<div class="box-body">
 				          <!-- Widget: user widget style 1 -->
 				          <div class="box box-widget widget-user">

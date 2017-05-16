@@ -68,8 +68,8 @@ class ProblemController extends Controller
      */
     public function show($id)
     {
-        $problem = Problem::findOrFail($id);
-        return view('contest.show', compact('problem'));
+        $problem = Problem::with('Contest')->findOrFail($id);
+        return view('problem.show', compact('problem'));
     }
 
 

@@ -17,8 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contestant/profile', 'HomeController@profile')->name('profile');
+Route::get('/password/change', 'HomeController@changePassword')->name('change_password');
+Route::post('/password/change', 'HomeController@passwordChange')->name('change_password');
 
 
 Route::get('contestant/contests', 'HomeController@contests');

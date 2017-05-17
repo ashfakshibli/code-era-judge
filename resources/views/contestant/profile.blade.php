@@ -53,7 +53,7 @@
               <!-- /.tab-pane -->
 
               <div class="tab-pane" id="settings">
-                <button type="button" class="btn btn-warning btn-flat margin">Change Password</button>
+                <a href="/password/change" class="btn btn-warning btn-flat margin">Change Password</a>
               </div>
               <!-- /.tab-pane -->
             </div>

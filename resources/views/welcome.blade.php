@@ -16,6 +16,7 @@
 	</div>
 
     <div class="col-lg-4">
+    <br>
     	<div class="box bg-green box-solid">
     		<div class="box-header with-border  text-center">
     			<h3 class="box-title">Our Well Wishers</h3>

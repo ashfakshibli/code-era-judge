@@ -10,8 +10,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Bootstrap 3.3.2 -->
     <link href="{{ asset("/vendor/adminlte/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
@@ -25,7 +23,7 @@
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link href="{{ asset("/vendor/adminlte/dist/css/skins/skin-yellow.min.css")}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("/vendor/adminlte/dist/css/skins/_all-skins.min.css")}}" rel="stylesheet" type="text/css" />
     @yield('custom_css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -36,27 +34,20 @@
     <![endif]-->
 
     <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
-</head>
-<body class="hold-transition skin-blue layout-top-nav">
-    <div class="wrapper" >
-        <div class="content-wrapper">
-            <div id="app">
-                @include('layouts.nav')
 
-                @yield('content')
-            </div>
+</head>
+<body class="hold-transition skin-blue-light layout-top-nav">
+
+    <div class="wrapper" >
+    @include('layouts.nav')
+        <div class="content-wrapper">
+             @yield('content')
         </div>
 
 
         @include('admin.partials.footer')
     </div>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+
 
     <!-- REQUIRED JS SCRIPTS -->
 
@@ -66,10 +57,12 @@
     <script src="{{ asset ("/vendor/adminlte/bootstrap/js/bootstrap.min.js") }}" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset ("/vendor/adminlte/dist/js/app.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset ("/vendor/adminlte/dist/js/demo.js") }}" type="text/javascript"></script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience -->
+          
     <script src="{{ asset ("/vendor/adminlte/plugins/slimScroll/jquery.slimscroll.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset ("/vendor/adminlte/plugins/fastclick/fastclick.min.js") }}" type="text/javascript"></script>
 

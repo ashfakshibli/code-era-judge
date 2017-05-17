@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Problem;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\ContestController;
 
 class HomeController extends Controller
 {
@@ -43,5 +45,30 @@ class HomeController extends Controller
         $problems =  $problem->with('Contest')->get();
 
         return view('problem.problems', compact('problems'));
+    }
+
+    public function changePassword()
+    {
+        return view('auth.passwords.change_password');
+    }
+
+    public function passwordChange(Request $request)
+    {
+
+        $this->validate(request(),
+            [
+                'password' => 'required|min:6|confirmed',
+            ]);
+
+
+        $request->user()->fill([
+
+            'password' => Hash::make($request->password)
+
+            ])->save();
+
+        ContestController::showMessage('alert-success','Success!', 'Password Change Successfully' );
+
+        return redirect('/home');
     }
 }

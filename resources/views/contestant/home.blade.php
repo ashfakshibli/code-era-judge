@@ -20,7 +20,7 @@
               page. However, you can choose any other skin. Make sure you
               apply the skin class to the body tag so the changes take effect.
         -->
-        <link href="{{ asset("/vendor/adminlte/dist/css/skins/skin-green.min.css")}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset("/vendor/adminlte/dist/css/skins/_all-skins.min.css")}}" rel="stylesheet" type="text/css" />
         
         @yield('custom_js')
 
@@ -40,6 +40,8 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+        @include('layouts.alert')
+        @include('layouts.errors')
             @yield('content')
         </div><!-- /.content-wrapper -->
 
@@ -60,6 +62,9 @@
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the
           user experience -->
+    <script src="{{ asset ("/vendor/adminlte/plugins/slimScroll/jquery.slimscroll.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset ("/vendor/adminlte/plugins/fastclick/fastclick.min.js") }}" type="text/javascript"></script>
+
 
     <script src="{{ asset ("custom/js/sidebar_navigate.js") }}"></script>
 

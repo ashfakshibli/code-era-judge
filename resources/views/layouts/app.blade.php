@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -42,13 +42,19 @@
         ]) !!};
     </script>
 </head>
-<body>
-    <div id="app">
-        @include('layouts.nav')
+<body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper" >
+        <div class="content-wrapper">
+            <div id="app">
+                @include('layouts.nav')
 
-        @yield('content')
+                @yield('content')
+            </div>
+        </div>
+
+
+        @include('admin.partials.footer')
     </div>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 
@@ -70,5 +76,6 @@
     <script src="{{ asset ("custom/js/sidebar_navigate.js") }}"></script>
 
     @yield('custom_js')
+   
 </body>
 </html>

@@ -28,12 +28,13 @@
                       <div class="box">
                         <!-- /.box-header -->
                         <div class="box-body">
-                          <table id="example2" class="table table-bordered table-hover text-center">
+                          <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                              <th style="width: 45%">Contest Title</th>
+                              <th style="width: 40%">Contest Title</th>
                               <th style="width: 15%">Start Time</th>
-                              <th style="width: 15%">Duration</th>
+                              <th style="width: 10%">Duration</th>
+                              <th style="width: 10%">Problem Added</th>
                               <th style="width: 25%">Options</th>
                             </tr>
                             </thead>
@@ -42,9 +43,11 @@
                             @foreach ($contests as $contest)
 
                                 <tr>
-                                  <td> <a href={{ url('contests/'.$contest->id) }}>{{ $contest->title }}</a></td>
+                                  <td> <a href={{ url('contest/'.$contest->id) }}>{{ $contest->title }}</a></td>
                                   <td> {{ Carbon\Carbon::parse($contest->start_time)->format('d-F-Y  H:i') }}</td>
-                                  <td> {{ Carbon\Carbon::parse($contest->start_time)->diffInHours(Carbon\Carbon::parse($contest->end_time)) }} hour(s)</td>
+                                  <td> {{ Carbon\Carbon::parse($contest->start_time)->diffInHours(Carbon\Carbon::parse($contest->end_time)) }} hour(s)
+                                  </td>
+                                  <td> {{ count($contest->problems) }}</td>
                                   <td>
                                     <a href={{ url('problem/add/'.$contest->id)}} class="btn bg-olive btn-flat tbl">Add Problem</a>
                                     <a href={{ url('contest/edit/'.$contest->id)}} class="btn bg-orange btn-flat tbl">Edit</a>
@@ -59,9 +62,10 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                              <th style="width: 35%">Contest Title</th>
-                              <th style="width: 20%">Start Time</th>
-                              <th style="width: 20%">End Time</th>
+                              <th style="width: 40%">Contest Title</th>
+                              <th style="width: 15%">Start Time</th>
+                              <th style="width: 10%">Duration</th>
+                              <th style="width: 10%">Problem Added</th>
                               <th style="width: 25%">Options</th>
                             </tr>
                             </tfoot>

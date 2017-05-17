@@ -15,10 +15,13 @@ class ProblemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Problem $problem)
     {
-        //
+        $problems =  $problem->with('Contest')->get();
+
+        return view('problem.problems', compact('problems'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -55,7 +58,7 @@ class ProblemController extends Controller
 
         ContestController::showMessage('alert-success','Added!', 'Problem added to the contest' );
 
-        return redirect('/create_problem');
+        return redirect('/admin/contests');
 
     }
 

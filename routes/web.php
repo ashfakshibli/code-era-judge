@@ -23,7 +23,8 @@ Route::get('/contestant/profile', 'HomeController@profile')->name('profile');
 
 Route::get('contestant/contests', 'HomeController@contests');
 Route::get('/contests', 'ContestController@index');
-Route::get('/problems', 'HomeController@problems');
+Route::get('contestant/problems', 'HomeController@problems');
+Route::get('/problems', 'ProblemController@index');
 
 
 

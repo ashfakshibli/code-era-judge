@@ -75,8 +75,9 @@ Route::group(['middleware' => 'admin_auth'], function() {
 
 	
 	//Problems route
+
 	Route::get('problem/add/{contest_id?}', 'ProblemController@create')->name('create_problem');
-	Route::post('problem/add', 'ProblemController@store')->name('store_problem');
+	Route::post('problem/add/', 'ProblemController@store')->name('store_problem');
 	Route::get('admin/problems', 'ProblemController@show_all')->name('show_problem');
 	Route::get('problem/edit/{problem_id}', 'ProblemController@edit')->name('edit_problem');
 	Route::post('problem/update/{problem_id}', 'ProblemController@update')->name('update_problem');
@@ -89,13 +90,6 @@ Route::group(['middleware' => 'admin_auth'], function() {
 	Route::get('contest/edit/{contest_id}', 'ContestController@edit')->name('edit_contest');
 	Route::post('contest/update/{contest_id}', 'ContestController@update')->name('update_contest');
 	Route::get('contest/destroy/{contest_id}', 'ContestController@destroy')->name('delete_contest');
-
-
-
-
-	Route::get('lte', 'ContestController@lte')->name('lte');
-
-
 
 });
 

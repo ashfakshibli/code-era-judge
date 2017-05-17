@@ -39,7 +39,7 @@
                         <a href="#"><i class="fa fa-list"></i><span> Problems</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                             <li><a href={{ url('/admin/problems')}}><i class="fa fa-list"></i><span> All Problems</span></a></li>
-                            <li><a href={{ url('/problem/add/')}}><i class="fa fa-edit"></i><span> Add New</span></a></li>
+                            <li><a href={{ url('/problem/add/null')}}><i class="fa fa-edit"></i><span> Add New</span></a></li>
                         </ul>
                     </li>
                 </ul><!-- /.sidebar-menu -->

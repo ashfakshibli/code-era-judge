@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Contracts\Validation\Validator;
 use App\Problem;
 use App\Contest;
 use App\Http\Controllers\ContestController;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\Validation\Validator;
+
 
 class ProblemController extends Controller
 {

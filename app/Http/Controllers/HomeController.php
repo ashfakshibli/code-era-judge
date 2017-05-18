@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Problem;
 use App\Contest;
+use App\Problem;
+use App\Http\Controllers\ContestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\ContestController;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -77,6 +78,15 @@ class HomeController extends Controller
 
     public function enroll(Request $request)        
     {
-        dd($request->all());
+        //dd($request->all());
+
+        $contest = Contest::find($request->contest_id);
+        $contest->user()->attach(Auth::user()->id);
+
+        ContestController::showMessage('alert-success','Success!', 'Successfully Enrolled to the contest' );
+
+        return redirect('/contestant/profile');
+
+
     }
 }

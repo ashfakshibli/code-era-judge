@@ -23,9 +23,9 @@ class CreateContestsTable extends Migration
         });
 
         //pivot table
-         Schema::create('user_contest', function (Blueprint $table) {
-            $table->integer('user_id');
+         Schema::create('contest_user', function (Blueprint $table) {
             $table->integer('contest_id');
+            $table->integer('user_id');
             $table->primary(['user_id','contest_id']);
            
         });

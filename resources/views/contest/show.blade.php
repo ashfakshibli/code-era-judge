@@ -12,11 +12,10 @@
       <div class="box box-warning">
         <div class="box-header with-border bg-olive text-center">
           <h2><b>{{ $contest->title }}</b></h2>
+
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <div class="row">
-
             <div class="col-md-12">
               <div class="box box-success box-solid">
                 <div class="box-header with-border text-center">
@@ -26,6 +25,18 @@
                   <p style="text-align: justify;">{!! $contest->description !!}</p>
                 </div>
                 <!-- /.box-body -->
+
+
+          <div class="box-footer">
+          <form method="POST" action="/contest/enroll">
+          {{ csrf_field() }}
+            <input type="hidden" name="contest_id" value="{{$contest->id}}">
+            <div class="col-md-12">
+              <button type="submit" class="btn bg-orange btn-flat center-block">Enroll</button>
+            </div>
+            <!-- /.col-->
+          </form>
+          </div>
               </div>
             </div>
             <!-- /.col-->
@@ -57,11 +68,11 @@
               </div>
             </div>
             <!-- /.col-->
-
-        </div>
         <!-- /.box-body -->
       </div>
+
       <!-- /.box -->
+      </div>
 
     </section>
     <!-- /.content -->

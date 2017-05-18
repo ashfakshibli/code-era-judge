@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Problem;
+use App\Contest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ContestController;
 
@@ -70,5 +71,12 @@ class HomeController extends Controller
         ContestController::showMessage('alert-success','Success!', 'Password Change Successfully' );
 
         return redirect('/home');
+    }
+
+
+
+    public function enroll(Request $request)        
+    {
+        dd($request->all());
     }
 }

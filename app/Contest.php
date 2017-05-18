@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Contest extends Model
 {
@@ -13,6 +14,11 @@ class Contest extends Model
     public function problem()
 	{
 		return $this->hasMany(Problem::class);
+	}
+
+	public function user()
+	{
+		return $this->belongsToMany(User::class);
 	}
 	
     

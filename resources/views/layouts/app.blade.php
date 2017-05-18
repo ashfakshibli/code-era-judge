@@ -36,7 +36,7 @@
     <!-- Scripts -->
 
 </head>
-<body class="hold-transition skin-blue-light layout-top-nav">
+<body class="hold-transition skin-green layout-top-nav">
 
     <div class="wrapper" >
     @include('layouts.nav')

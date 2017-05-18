@@ -111,6 +111,7 @@ class ContestController extends Controller
     public function show($id)
     {
         $contest =  Contest::with('Problem')->findOrFail($id);
+
         return view('contest.show', compact('contest'));
     }
 

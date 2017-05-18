@@ -23,11 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contestant/profile', 'HomeController@profile')->name('profile');
 Route::get('/password/change', 'HomeController@changePassword')->name('change_password');
 Route::post('/password/change', 'HomeController@passwordChange')->name('change_password');
-
-
 Route::get('contestant/contests', 'HomeController@contests');
-Route::get('/contests', 'ContestController@index');
 Route::get('contestant/problems', 'HomeController@problems');
+Route::post('contest/enroll', 'HomeController@enroll')->name('enroll_contest');
+
+
+Route::get('/contests', 'ContestController@index');
 Route::get('/problems', 'ProblemController@index');
 
 
@@ -90,6 +91,8 @@ Route::group(['middleware' => 'admin_auth'], function() {
 	Route::get('contest/edit/{contest_id}', 'ContestController@edit')->name('edit_contest');
 	Route::post('contest/update/{contest_id}', 'ContestController@update')->name('update_contest');
 	Route::get('contest/destroy/{contest_id}', 'ContestController@destroy')->name('delete_contest');
+
+
 
 });
 

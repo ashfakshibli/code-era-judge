@@ -12,12 +12,13 @@
       <div class="box box-warning">
         <div class="box-header with-border bg-olive text-center">
           <h2><b>{{ $contest->title }}</b></h2>
+          <button  class="btn btn-flat margin bg-orange lead"><b id="timer_one" style="font-size: 20px;"></b></button>
 
         </div>
         <!-- /.box-header -->
         <div class="box-body">
             <div class="col-md-12">
-              <div class="box box-success box-solid">
+              <div class="box box-default box-solid">
                 <div class="box-header with-border text-center">
                   <h3>Contest Description</h3>
                 </div>
@@ -42,7 +43,7 @@
             <!-- /.col-->
 
             <div class="col-md-12">
-              <div class="box box-success box-solid">
+              <div class="box box-default box-solid">
                 <div class="box-header with-border text-center">
                   <h3>Problem List</h3>
                 </div>
@@ -78,4 +79,15 @@
     <!-- /.content -->
 </div>
 @endsection
+
+    @section('custom_js')
+            <script src="{{ asset ("js/jquery.countdown.min.js") }}"></script>
+
+            <script type="text/javascript">
+               $('#timer_one').countdown('{{ $contest->start_time }}', function(event) {
+                  $(this).html(event.strftime('%d day(s) %H:%M:%S'));
+              });
+            </script>
+
+    @endsection
 

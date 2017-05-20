@@ -37,6 +37,10 @@ Route::get('/problem/{id}', 'ProblemController@show');
 Route::get('/contest/{id}', 'ContestController@show');
 
 
+Route::get('/code/submit', 'ProblemController@codeSubmit');
+Route::post('/code/submit', 'ProblemController@fileSubmit');
+
+
 
 
 

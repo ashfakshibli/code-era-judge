@@ -32,9 +32,11 @@
 <div class="container">
   <!-- Main content -->
     <section class="content">
+     @include('layouts.alert')
+        @include('layouts.errors')
 
       <!-- SELECT2 EXAMPLE -->
-      <div class="box box-danger box-solid">
+      <div class="box box-default box-solid">
         <div class="box-header with-border">
           <h3 class="box-title">Problem ID #<span class="pull-right badge bg-green">{{ $problem->id }}</span></h3>
         </div>
@@ -60,7 +62,7 @@
             <!-- /.col-->
 
             <div class="col-md-12">
-            <div class="box box-danger box-solid">
+            <div class="box box-default box-solid">
                 <div class="box-header with-border">
                     <label>Problem Description</label>
                 </div>
@@ -121,8 +123,17 @@
     <!-- Modal -->
   <div class="modal fade" id="inputModal" role="dialog">
     <div class="modal-dialog">
-      <form>
+      <form method="POST" action="/code/submit" enctype="multipart/form-data">
+      {{ csrf_field() }}
         <!-- Modal content-->
+
+
+
+        <input type="hidden" name="problem_id" value="{{ $problem->id }}">
+        <input type="hidden" name="input" value="{{ $problem->input }}">
+        <input type="hidden" name="output" value="{{ $problem->output }}">
+        
+
         <div class="modal-content">
 
           <div class="modal-header">
@@ -134,21 +145,24 @@
 
             <div class="form-group">
               <label class="control-label">Select a Language:</label>
-              <select class="form-control">
-                <option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-                <option>option 5</option>
+              <select name="language" class="form-control">
+                <option value="C">C</option>
+                <option value="CPP">C++</option>
+                <option value="CSHARP">C#</option>
+                <option value="PYTHON">Python</option>
+                <option value="JAVA">JAVA</option>
+                <option value="PHP">PHP</option>
+                <option value="JAVASCRIPT">JS</option>
+                <option value="RUBY">Ruby</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label class="control-label">Select the source file:</label>
+              <label class="control-label">Select the program file:</label>
               <div class="input-group">
                 <label class="input-group-btn">
                     <span class="btn bg-orange btn-flat">
-                        Browse&hellip; <input type="file" style="display: none;" multiple>
+                        Browse&hellip; <input type="file" style="display: none;" name="file" multiple>
                     </span>
                 </label>
                 <input type="text" class="form-control" readonly>
@@ -164,7 +178,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-flat" data-dismiss="modal">Close</button>
-            <button type="button" class="btn bg-orange btn-flat">Submit</button>
+            <button type="submit" class="btn bg-orange btn-flat">Submit</button>
           </div>
 
         </div>

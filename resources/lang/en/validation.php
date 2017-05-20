@@ -98,8 +98,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'file' => [
+            'mimes' => 'The file type is invalid',
         ],
     ],
 

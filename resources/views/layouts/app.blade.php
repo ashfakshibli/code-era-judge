@@ -68,6 +68,8 @@
 
     <script src="{{ asset ("custom/js/sidebar_navigate.js") }}"></script>
 
+
+
     @yield('custom_js')
    
 </body>

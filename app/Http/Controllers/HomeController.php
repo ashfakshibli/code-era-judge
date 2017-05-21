@@ -85,7 +85,7 @@ class HomeController extends Controller
 
         ContestController::showMessage('alert-success','Success!', 'Successfully Enrolled to the contest' );
 
-        return redirect('/contestant/profile');
+        return redirect('/contestant/enrolled');
 
 
     }

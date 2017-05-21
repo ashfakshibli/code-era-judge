@@ -76,11 +76,11 @@ class HomeController extends Controller
 
 
 
-    public function enroll(Request $request)        
+    public function enroll($contestId)        
     {
         //dd($request->all());
 
-        $contest = Contest::find($request->contest_id);
+        $contest = Contest::find($contestId);
         $contest->user()->attach(Auth::user()->id);
 
         ContestController::showMessage('alert-success','Success!', 'Successfully Enrolled to the contest' );

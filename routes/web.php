@@ -25,7 +25,7 @@ Route::get('/password/change', 'HomeController@changePassword')->name('change_pa
 Route::post('/password/change', 'HomeController@passwordChange')->name('change_password');
 Route::get('contestant/contests', 'HomeController@contests');
 Route::get('contestant/problems', 'HomeController@problems');
-Route::post('contest/enroll', 'HomeController@enroll')->name('enroll_contest');
+Route::get('contest/enroll/{contest_id}', 'HomeController@enroll')->name('enroll_contest');
 
 
 Route::get('/contests', 'ContestController@index');

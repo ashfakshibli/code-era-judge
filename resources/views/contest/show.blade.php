@@ -29,14 +29,9 @@
 
 
           <div class="box-footer">
-          <form method="POST" action="/contest/enroll">
-          {{ csrf_field() }}
-            <input type="hidden" name="contest_id" value="{{$contest->id}}">
-            <div class="col-md-12">
-              <button type="submit" class="btn bg-orange btn-flat center-block">Enroll</button>
+            <div class="col-md-4 col-md-offset-4">
+              <a href="{{ url("/contest/enroll/".$contest->id)}}" class="btn bg-orange btn-flat center-block">Enroll</a>
             </div>
-            <!-- /.col-->
-          </form>
           </div>
               </div>
             </div>

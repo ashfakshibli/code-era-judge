@@ -42,6 +42,9 @@ Route::get('/code/submit', 'ProblemController@codeSubmit');
 Route::post('/code/submit', 'ProblemController@fileSubmit');
 
 
+Route::get('/ranking/{contest_id}', 'RankingController@index');
+
+
 
 
 

@@ -10,12 +10,19 @@
 
       <!-- SELECT2 EXAMPLE -->
       <div class="box box-warning">
-        <div class="box-header with-border bg-olive text-center">
-          <h2><b>{{ $contest->title }}</b></h2>
-
-          <p hidden>Starting In<button  class="btn btn-flat margin bg-orange lead"><b id="timer_one" style="font-size: 20px;"></b></button></p>
-          <p hidden>Ending In<button  class="btn btn-flat margin bg-orange lead"><b id="timer_two" style="font-size: 20px;"></b></button></p>
-
+        <div class="box-header with-border bg-olive ">
+          <div class="col-md-6">
+            
+            <h2 class="pull-left"><b>{{ $contest->title }}</b></h2>
+          </div>
+          
+          <div class="col-md-4">
+            <p hidden>Starting In<button  class="btn btn-flat margin bg-orange lead"><b id="timer_one" style="font-size: 20px;"></b></button></p>
+            <p hidden>Ending In<button  class="btn btn-flat margin bg-orange lead"><b id="timer_two" style="font-size: 20px;"></b></button></p>
+          </div>
+          <div class="col-md-2" style="margin-top: 25px">
+            <a href="{{ url('/ranking/'.$contest->id)}}" class="btn btn-flat bg-orange">Ranking</a>
+          </div>
         </div>
         <!-- /.box-header -->
         <div class="box-body">

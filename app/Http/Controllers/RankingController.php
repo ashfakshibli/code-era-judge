@@ -19,7 +19,7 @@ class RankingController extends Controller
 
         $allData = $contest->with('User', 'Problem')->get();
 
-        return view('');
+        return view('contest.ranking');
 
 
     }

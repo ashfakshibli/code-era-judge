@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contest;
+use App\User;
 use App\Problem;
 use App\Http\Controllers\ContestController;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('contestant.home');
+        return view('contestant.profile');
     }
 
 
@@ -87,6 +88,14 @@ class HomeController extends Controller
 
         return redirect('/contestant/enrolled');
 
+
+    }
+    public function enrolled()
+    {
+        $user = User::findOrFail(Auth::user()->id);
+        $enrolled = $user->contest;
+        
+        return view('contest.enrolled', compact('enrolled'));
 
     }
 }

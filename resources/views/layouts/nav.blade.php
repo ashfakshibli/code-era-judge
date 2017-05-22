@@ -1,5 +1,5 @@
 
-  <header class="main-header">
+  <header class="main-header bg-light-blue">
     <nav class="navbar navbar-static-top" role="navigation">
       <div class="container">
         <div class="navbar-header">

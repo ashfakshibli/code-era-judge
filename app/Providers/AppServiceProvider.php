@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         view()->composer('*', function($view){
-            $contests = (new \App\Contest)->all();
+            $contests = (new \App\Contest)->orderBy('created_at', 'desc')->get();
             // $problems = \App\Problem::has('contes')->pluck('name');
             $view->with(compact('contests'));
 

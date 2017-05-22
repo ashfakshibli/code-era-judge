@@ -39,9 +39,9 @@
 
                                 <tr>
                                   <td> {{ $problem->id  }}</td>
-                                  <td> <a href={{ url('problems/'.$problem->id) }}>{{ $problem->title }}</a></td>
+                                  <td> <a href={{ url('problem/'.$problem->id) }}>{{ $problem->title }}</a></td>
                                   
-                                  <td><a href="{{url('/admin/contests/'.$problem->contest['id'])}}"> {{ $problem->contest['title'] }}</a></td>
+                                  <td><a href="{{ url('contest/'.$problem->contest['id'])}}"> {{ $problem->contest['title'] }}</a></td>
                                   <td>
                             
                                     <a href={{ url('problem/edit/'.$problem->id)}} class="btn bg-orange btn-flat tbl">Edit</a>

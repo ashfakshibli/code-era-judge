@@ -55,7 +55,7 @@
             <div class="col-md-12">
               <div class="box-body">
                 <label>Contest Link:</label>
-                <a href="#">{{ $problem->contest['title'] }}</a>
+                <a class="btn btn-flat bg-yellow" href="{{ url('contest/'.$problem->contest['id']) }}">{{ $problem->contest['title'] }}</a>
               </div>
               <!-- /.box-body -->
             </div>
@@ -103,10 +103,22 @@
           </div>
           <!-- /.row -->
 
+
+
+
           <div class="box-footer">
+          @php
+
+          $time = Carbon\Carbon::now('Asia/Dhaka');
+          $start = Carbon\Carbon::parse($problem->contest['start_time']);
+          $end = Carbon\Carbon::parse($problem->contest['end_time']);
+          @endphp
+
+          @if(Carbon\Carbon::parse($time)->between($start, $end))
             <div class="col-md-12">
               <button type="button" class="btn bg-orange btn-flat center-block" data-toggle="modal" data-target="#inputModal" data-whatever="">Submit Output</button>
             </div>
+          @endif
             <!-- /.col-->
           </div>
         </div>
@@ -169,10 +181,10 @@
               </div>
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
               <label for="message-text" class="form-control-label">Your Output:</label>
               <textarea class="form-control" id="message-text"></textarea>
-            </div>
+            </div> --}}
 
           </div>
 

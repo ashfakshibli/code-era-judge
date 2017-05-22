@@ -26,6 +26,7 @@ Route::post('/password/change', 'HomeController@passwordChange')->name('change_p
 Route::get('contestant/contests', 'HomeController@contests');
 Route::get('contestant/problems', 'HomeController@problems');
 Route::get('contest/enroll/{contest_id}', 'HomeController@enroll')->name('enroll_contest');
+Route::get('contestant/enrolled', 'HomeController@enrolled')->name('enrolled_contests');
 
 
 Route::get('/contests', 'ContestController@index');
@@ -74,10 +75,7 @@ Route::group(['middleware' => 'admin_auth'], function() {
 
 	Route::post('admin_logout', 'AdminAuth\LoginController@logout')->name('admin_logout');
 
-	Route::get('/admin_home', function(){
-		return view('admin.home');
-	});
-
+	Route::get('/admin_home','ContestController@show_all')->name('show_all');
 	
 	//Problems route
 

@@ -45,7 +45,7 @@
                                 <tr>
                                   <td> <a href={{ url('contest/'.$contest->id) }}>{{ $contest->title }}</a></td>
                                   <td> {{ Carbon\Carbon::parse($contest->start_time)->format('d-F-Y  H:i') }}</td>
-                                  <td> {{ Carbon\Carbon::parse($contest->start_time)->diffInHours(Carbon\Carbon::parse($contest->end_time)) }} hour(s)
+                                  <td> {{ Carbon\Carbon::parse($contest->start_time)->diffForHumans(Carbon\Carbon::parse($contest->end_time), true) }} 
                                   </td>
                                   <td> {{ count($contest->problems) }}</td>
                                   <td>

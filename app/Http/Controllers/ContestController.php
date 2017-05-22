@@ -110,7 +110,7 @@ class ContestController extends Controller
      */
     public function show($id)
     {
-        $contest =  Contest::with('Problem')->findOrFail($id);
+        $contest =  Contest::with('Problem', 'User')->findOrFail($id);
 
         return view('contest.show', compact('contest'));
     }
@@ -131,7 +131,7 @@ class ContestController extends Controller
      */
     public function show_all(Contest $contest)
     {
-        $contests = $contest->all();
+        $contests = $contest->orderBy('created_at', 'asc')->get();
      
         return view('contest.admin_contest_list', compact('contests'));
     }

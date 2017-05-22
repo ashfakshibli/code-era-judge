@@ -118,7 +118,8 @@ class ProblemController extends Controller
                 'output' => 'required',
             ]);
 
-        $problem->save();
+
+        $problem->fill($request->all())->save();
 
         ContestController::showMessage('alert-success','Updated!', 'Problem has been updated' );
 
@@ -150,28 +151,35 @@ class ProblemController extends Controller
     {
         
 
-        // $valid = ['text/x-c','text/plain','application/octet-stream','application/javascript', 'text/x-php'];
-        // $extension = $request->file->getMimeType();
+        $valid = ['text/x-c','text/plain','application/octet-stream','application/javascript', 'text/x-php'];
+        $extension = $request->file->getMimeType();
 
-        // if(!in_array($extension, $valid)){
-        //     ContestController::showMessage('alert-danger','Invalid!', 'The file type is invalid' );
-        //     return back();
+        if(!in_array($extension, $valid)){
+            ContestController::showMessage('alert-danger','Invalid!', 'The file type is invalid' );
+            return back();
 
-        // }
+        }
 
-        // $filePath = $request->file->path();
-        // $sampleInput = "24";
-        // $language = $request->language;
+        $filePath = $request->file->path();
+        $sampleInput = $request->input;
+        $language = $request->language;
 
-        // $response = $this->codeSubmit($filePath, $sampleInput, $language);
-         //dd($request->problem_id);
+        $response = $this->codeSubmit($filePath, $sampleInput, $language);
+
+
+        dd($response, $request->output);
+
+        if($response == $request->output){
+            $input['result'] = 'AC';
+         }
+        else $input['result'] = 'WA';
 
 
         $problem= Problem::findOrFail($request->problem_id);
         $input['problem_id'] = $request->problem_id;
         $input['contest_id'] = $problem->contest->id;
         $input['user_id']  = Auth::user()->id;
-        $input['result'] = 'WA';
+        
 
 
 

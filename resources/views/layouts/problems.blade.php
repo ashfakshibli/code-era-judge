@@ -2,6 +2,7 @@
     <section class="content">
 
       @foreach($problems as $problem)
+        @if( Carbon\Carbon::now('Asia/Dhaka')->gt(Carbon\Carbon::parse($problem->contest['end_time'])) )
         <div class="col-lg-{{$column}}">
           <!-- small box -->
           @if(($loop->iteration)%2 == 0)
@@ -22,6 +23,7 @@
         </div>
         <!-- ./col -->
       </div>
+        @endif
       @endforeach
 
     </section>

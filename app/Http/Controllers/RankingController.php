@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ranking;
+use App\Contest;
 use Illuminate\Http\Request;
 
 class RankingController extends Controller
@@ -12,9 +13,15 @@ class RankingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $contest = Contest::findOrFail($id);
+
+        $allData = $contest->with('User', 'Problem')->get();
+
+        return view('');
+
+
     }
 
     /**

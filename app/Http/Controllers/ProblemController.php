@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Problem;
+use App\Ranking;
 use App\Contest;
 use App\Http\Controllers\ContestController;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use App\Hackerearth\sdk\index;
+use Carbon\Carbon;
 
 
 class ProblemController extends Controller
@@ -119,6 +121,8 @@ class ProblemController extends Controller
             ]);
 
 
+
+
         $problem->fill($request->all())->save();
 
         ContestController::showMessage('alert-success','Updated!', 'Problem has been updated' );
@@ -167,9 +171,9 @@ class ProblemController extends Controller
         $response = $this->codeSubmit($filePath, $sampleInput, $language);
 
 
-        dd($response, $request->output);
+        //dd($response, $request->output);
 
-        if($response == $request->output){
+        if(trim($response['run_status']['output']) == $request->output){
             $input['result'] = 'AC';
          }
         else $input['result'] = 'WA';
@@ -179,19 +183,23 @@ class ProblemController extends Controller
         $input['problem_id'] = $request->problem_id;
         $input['contest_id'] = $problem->contest->id;
         $input['user_id']  = Auth::user()->id;
-        
 
 
-
-        dd($input);
-
-        
+        //dd(\Carbon\Carbon::now('Asia/Dhaka')->diffInMinutes(\Carbon\Carbon::parse($problem->contest->start_time), true));
 
 
+        $input['point'] = \Carbon\Carbon::now('Asia/Dhaka')->diffInMinutes(\Carbon\Carbon::parse($problem->contest->start_time), true);
 
+    
+        if($input['result'] == 'WA'){
+                $input['point'] += 20;
+        }
 
+        Ranking::create($input);
 
-        
+        ContestController::showMessage('alert-success','Success!', 'Successfully Submitted Solution' );
+
+        return redirect('/contest/'.$problem->contest->id);
 
     }
 

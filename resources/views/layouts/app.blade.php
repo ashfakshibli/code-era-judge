@@ -41,6 +41,8 @@
     <div class="wrapper" >
     @include('layouts.nav')
         <div class="content-wrapper">
+        @include('layouts.alert')
+        @include('layouts.errors')
              @yield('content')
         </div>
 

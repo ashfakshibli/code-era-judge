@@ -34,7 +34,7 @@
                                     <ul class="menu">
                                         <li><!-- start notification -->
                                             <a href="#">
-                                                <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                                <i class="fa fa-users text-aqua"></i>{{ dd(App\Http\Controllers\HomeController::notify())}}
                                             </a>
                                         </li><!-- end notification -->
                                     </ul>

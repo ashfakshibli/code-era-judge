@@ -98,4 +98,11 @@ class HomeController extends Controller
         return view('contest.enrolled', compact('enrolled'));
 
     }
+
+    public static function notify()
+    {
+        $user_contest = Auth::user()->with('contest');
+
+        return $user_contest;
+    }
 }

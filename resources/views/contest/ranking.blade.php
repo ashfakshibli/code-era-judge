@@ -31,8 +31,7 @@
           <div class="col-md-4">
             <h3>{{ $contestData->title }}</h3>
           </div>
-          <div class="col-md-8 pull-right">
-            <button type="button" class="btn btn-flat bg-olive"> First to solve problem</button>
+          <div class="col-md-4 pull-right">
             <button type="button" class="btn btn-flat btn-info margin">Solved problem</button>
             <button type="button" class="btn btn-flat bg-red margin">Attempted problem</button>
           </div>
@@ -61,27 +60,29 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($sortedRankingData as $key => $data)
                       <tr>
-                        <td>1</td>
-                        <td>Muhammad Rabiul Alam MRAB</td>
-                        <td>8</td>
-                        <td>1471</td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-olive">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-red">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td>
-                        ...
-                        </td>
+                        <td>{{ $key+1 }}</td>
+                        <td>{{ $data['contestant_name'] }}</td>
+                        <td>{{ $data['solved'] }}</td>
+                        <td>{{ $data['time_point'] }}</td>
+                        @foreach($data['problem'] as $problem => $problem_data)
+                          @if($problem_data['result'] == 'AC')
+                              <td class="btn-info">
+                                  <p>234</p>
+                              </td>
+                          @elseif($problem_data['result'] == 'WA')
+                              <td class="bg-red">
+                                <p>234</p>
+                              </td>
+                          @else
+                              <td>
+                              ...
+                              </td>
+                          @endif
+                        @endforeach
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

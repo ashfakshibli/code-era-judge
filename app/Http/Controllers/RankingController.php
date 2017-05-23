@@ -20,6 +20,7 @@ class RankingController extends Controller
 
         //dd($contestData->user);
         //
+        $userCount = 0;
         foreach($contestData->user as $user){
 
             $userData = DB::table('rankings')
@@ -28,21 +29,68 @@ class RankingController extends Controller
                                 ['contest_id','=',$contestData->id], 
                                 ['result','=','AC'],
                                 ]);
+            $userDataAll = DB::table('rankings')
+                            ->where([
+                                ['user_id','=',$user->id], 
+                                ['contest_id','=',$contestData->id], 
+                                ]);
 
-            $rankingData['contestant_name'] = $user->name;
-            $rankingData['solved'] = count($userData);
+            $rankingData[$userCount]['contestant_name'] = $user->name;
+            $rankingData[$userCount]['solved'] = count($userData);
 
-            $rankingData['time_point'] = $userData->sum('rankings.point');
+            $rankingData[$userCount]['time_point'] = $userDataAll->sum('rankings.point');
+
+            $letter = range('A', 'Z');
+            $count = 0;
+            foreach ($contestData->problem as $problem) {
+                $problemSolved = DB::table('rankings')
+                            ->where([
+                                ['user_id','=',$user->id], 
+                                ['contest_id','=',$contestData->id], 
+                                ['problem_id','=',$problem->id], 
+                                ['result','=','AC'],
+                                ]);
+                $problemAttempted = DB::table('rankings')
+                            ->where([
+                                ['user_id','=',$user->id], 
+                                ['contest_id','=',$contestData->id], 
+                                ['problem_id','=',$problem->id], 
+                                ['result','=','WA'],
+                                ]);
+                if($problemSolved){
+                        $rankingData[$userCount]['problem'][$letter[$count]]['result'] = 'AC';
+                }
+                elseif ($problemAttempted) {
+                    $rankingData[$userCount]['problem'][$letter[$count]]['result'] = 'WA';
+                }
+                else $rankingData[$userCount]['problem'][$letter[$count]]['result'] = 'NA';
+
+                $rankingData[$userCount]['problem'][$letter[$count]]['point'] = $problemSolved->sum('rankings.point')+ $problemAttempted->sum('rankings.point');
+                $count++;
+            }
+            $userCount++;
 
         }
 
-        dd($rankingData);
+       
 
+        
 
-        return view('contest.ranking', compact('contestData'));
+        $sortedRankingData = $this->orderBy($rankingData, 'point');
+
+        //dd($sortedRankingData);
+        return view('contest.ranking', compact('sortedRankingData', 'contestData'));
 
 
     }
+
+    function orderBy($data, $field) { 
+        $code = "return strnatcmp(\$a['$field'], \$b['$field']);"; 
+        usort($data, create_function('$a,$b', $code));
+        return $data; 
+    }
+
+    
 
     /**
      * Show the form for creating a new resource.

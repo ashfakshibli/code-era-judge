@@ -29,13 +29,12 @@
       <div class="box box-warning">
         <div class="box-header with-border">
           <div class="col-md-4">
-            <h3>Contestant Rankings</h3>
+            <h3>{{ $contestData->title }}</h3>
           </div>
           <div class="col-md-8 pull-right">
             <button type="button" class="btn btn-flat bg-olive"> First to solve problem</button>
             <button type="button" class="btn btn-flat btn-info margin">Solved problem</button>
             <button type="button" class="btn btn-flat bg-red margin">Attempted problem</button>
-            <button type="button" class="btn btn-flat bg-yellow">Pending judgement</button>
           </div>
         </div>
         <!-- /.box-header -->
@@ -52,17 +51,13 @@
                       <th style="width: 20%">Contestant Name</th>
                       <th >Solved</th>
                       <th >Time</th>
-                      <th >A</th>
-                      <th >B</th>
-                      <th >C</th>
-                      <th >D</th>
-                      <th >E</th>
-                      <th >F</th>
-                      <th >G</th>
-                      <th >H</th>
-                      <th >I</th>
-                      <th >J</th>
-                      <th >K</th>
+                      @php
+                      $letter = range('A', 'Z');
+                       $count = count($contestData->problem);
+                      @endphp
+                      @for($i=0; $i<$count; $i++)
+                      <th >{{ $letter[$i] }}</th>
+                      @endfor
                     </tr>
                     </thead>
                     <tbody>
@@ -75,14 +70,6 @@
                           <p>2</p>
                           <p>234</p>
                         </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
                         <td class="bg-olive">
                           <p>2</p>
                           <p>234</p>
@@ -93,121 +80,6 @@
                         </td>
                         <td>
                         ...
-                        </td>
-                        <td>
-                        ...
-                        </td>
-                        <td class="bg-olive">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-olive">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-olive">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-yellow">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                      </tr><tr>
-                        <td>1</td>
-                        <td>Rabiul Alam MRAB</td>
-                        <td>8</td>
-                        <td>1471</td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-red">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-olive">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-red">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td>
-                        ...
-                        </td>
-                        <td class="bg-olive">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-yellow">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Ashfak Md. Shibli</td>
-                        <td>8</td>
-                        <td>1471</td>
-                        <td class="btn-olive">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-red">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-olive">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td>
-                        ...
-                        </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td>
-                        ...
-                        </td>
-                        <td class="bg-olive">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="btn-info">
-                          <p>2</p>
-                          <p>234</p>
-                        </td>
-                        <td class="bg-red">
-                          <p>2</p>
-                          <p>234</p>
                         </td>
                       </tr>
                     </tbody>

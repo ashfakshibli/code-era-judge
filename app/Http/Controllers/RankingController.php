@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Ranking;
 use App\Contest;
 use Illuminate\Http\Request;
@@ -15,11 +16,30 @@ class RankingController extends Controller
      */
     public function index($id)
     {
-        $contest = Contest::findOrFail($id);
+        $contestData = Contest::with('User', 'Problem')->findOrFail($id);
 
-        $allData = $contest->with('User', 'Problem')->get();
+        //dd($contestData->user);
+        //
+        foreach($contestData->user as $user){
 
-        return view('contest.ranking');
+            $userData = DB::table('rankings')
+                            ->where([
+                                ['user_id','=',$user->id], 
+                                ['contest_id','=',$contestData->id], 
+                                ['result','=','AC'],
+                                ]);
+
+            $rankingData['contestant_name'] = $user->name;
+            $rankingData['solved'] = count($userData);
+
+            $rankingData['time_point'] = $userData->sum('rankings.point');
+
+        }
+
+        dd($rankingData);
+
+
+        return view('contest.ranking', compact('contestData'));
 
 
     }

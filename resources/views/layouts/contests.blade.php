@@ -15,7 +15,8 @@
               <h4 data-time="{{ $contest->start_time }}" data-end="{{$contest->end_time}}" class="pull-right">{{ $contest->start_time }}</h4>
 
 
-              <h5>{{ Carbon\Carbon::parse($contest->start_time)->format('d-F-Y  H:i')  }}</h5>
+              <h5>{{ Carbon\Carbon::parse($contest->start_time)->format('d-F-Y  H:i')  }} &nbsp;&nbsp; (Duration: {{ Carbon\Carbon::parse($contest->start_time)->diffForHumans(Carbon\Carbon::parse($contest->end_time), true) }} )</h5>
+
 
             </div>
             <a href="{{ url('/contest/'.$contest->id) }}" class="small-box-footer">

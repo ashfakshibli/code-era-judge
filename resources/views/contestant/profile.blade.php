@@ -24,9 +24,9 @@
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">
                 <li><a><b>Email:</b> <p class="pull-right">{{ Auth::user()->email }}</p></a></li>
-                <li><a><b>Contest(s) Participated:</b> <span class="pull-right badge bg-aqua">0</span></a></li>
+                {{-- <li><a><b>Contest(s) Participated:</b> <span class="pull-right badge bg-aqua">0</span></a></li>
                 <li><a><b>Problem(s) Solved:</b> <span class="pull-right badge bg-green">0</span></a></li>
-                <li><a><b>Problem(s) Tried:</b> <span class="pull-right badge bg-blue">0</span></a></li>
+                <li><a><b>Problem(s) Tried:</b> <span class="pull-right badge bg-blue">0</span></a></li> --}}
               </ul>
             </div>
 

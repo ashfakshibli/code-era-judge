@@ -75,9 +75,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($contest->problem as $problem)
+                    @foreach ($contest->problem as $key => $problem)
                     <tr>
-                      <td> ({{ $loop->count }}) </td>
+                      <td> ({{ $key+1 }}) </td>
                       <td>  <a href="{{url('problem/'.$problem->id)}}">{{ $problem->title }}</a></td>
                     </tr>
                     @endforeach

@@ -32,7 +32,7 @@
             <h3>{{ $contestData->title }}</h3>(Ranking)
           </div>
           <div class="col-md-4 pull-right">
-            <button type="button" class="btn btn-flat btn-info margin">Solved problem</button>
+            <button type="button" class="btn btn-flat btn-success margin">Solved problem</button>
             <button type="button" class="btn btn-flat bg-red margin">Attempted problem</button>
           </div>
         </div>
@@ -73,7 +73,7 @@
                               </td>
                           @elseif($problem_data['result'] == 'WA')
                               <td class="bg-red">
-                                <i class="fa icon-remove-sign"></i>
+                                <i class="fa fa-times"></i>
 
                               </td>
                           @else

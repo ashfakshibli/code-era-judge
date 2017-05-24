@@ -68,12 +68,13 @@
                         <td>{{ $data['time_point'] }}</td>
                         @foreach($data['problem'] as $problem => $problem_data)
                           @if($problem_data['result'] == 'AC')
-                              <td class="btn-info">
-                                  <p>234</p>
+                              <td class="btn-success">
+                                <i class="fa fa-check"></i>
                               </td>
                           @elseif($problem_data['result'] == 'WA')
                               <td class="bg-red">
-                                <p>234</p>
+                                <i class="fa icon-remove-sign"></i>
+
                               </td>
                           @else
                               <td>

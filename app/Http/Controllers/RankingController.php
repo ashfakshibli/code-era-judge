@@ -29,6 +29,7 @@ class RankingController extends Controller
                                 ['contest_id','=',$contestData->id], 
                                 ['result','=','AC'],
                                 ]);
+
             $userDataAll = DB::table('rankings')
                             ->where([
                                 ['user_id','=',$user->id], 
@@ -36,7 +37,9 @@ class RankingController extends Controller
                                 ]);
 
             $rankingData[$userCount]['contestant_name'] = $user->name;
-            $rankingData[$userCount]['solved'] = count($userData);
+
+            
+            $rankingData[$userCount]['solved'] = $userData->count();
 
             $rankingData[$userCount]['time_point'] = $userDataAll->sum('rankings.point');
 
@@ -57,26 +60,33 @@ class RankingController extends Controller
                                 ['problem_id','=',$problem->id], 
                                 ['result','=','WA'],
                                 ]);
-                if($problemSolved){
+                if($problemSolved->count()){
                         $rankingData[$userCount]['problem'][$letter[$count]]['result'] = 'AC';
                 }
-                elseif ($problemAttempted) {
+                elseif ($problemAttempted->count()) {
                     $rankingData[$userCount]['problem'][$letter[$count]]['result'] = 'WA';
                 }
                 else $rankingData[$userCount]['problem'][$letter[$count]]['result'] = 'NA';
 
-                $rankingData[$userCount]['problem'][$letter[$count]]['point'] = $problemSolved->sum('rankings.point')+ $problemAttempted->sum('rankings.point');
+                if($problemSolved->count() && $problemAttempted->count()){
+                    $rankingData[$userCount]['problem'][$letter[$count]]['point'] = $problemSolved->sum('rankings.point')+ $problemAttempted->sum('rankings.point');
+                }
+                else $rankingData[$userCount]['problem'][$letter[$count]]['point'] = '0';
+                
                 $count++;
+
             }
             $userCount++;
 
         }
 
+        //dd($rankingData);
+
        
 
         
 
-        $sortedRankingData = $this->orderBy($rankingData, 'point');
+        $sortedRankingData = $this->orderBy($rankingData, 'solved');
 
         //dd($sortedRankingData);
         return view('contest.ranking', compact('sortedRankingData', 'contestData'));
@@ -85,7 +95,7 @@ class RankingController extends Controller
     }
 
     function orderBy($data, $field) { 
-        $code = "return strnatcmp(\$a['$field'], \$b['$field']);"; 
+        $code = "return  \$b['$field'] -\$a['$field'] ;"; 
         usort($data, create_function('$a,$b', $code));
         return $data; 
     }

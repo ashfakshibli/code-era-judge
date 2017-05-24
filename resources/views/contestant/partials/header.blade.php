@@ -2,7 +2,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="/home" class="logo">
+            <a href="/" class="logo">
                 <span class="logo-mini"><b>C</b>E</span>
                   <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>Code</b>Era</span>
@@ -32,11 +32,36 @@
                                 <li>
                                     <!-- Inner Menu: contains the notifications -->
                                     <ul class="menu">
+                                    @foreach(App\Http\Controllers\HomeController::notify() as $contest)
+                                    @php
+                                        $current = Carbon\Carbon::now('Asia/Dhaka');
+                                        $startTime = Carbon\Carbon::parse($contest->start_time); 
+                                        $differ = Carbon\Carbon::parse($current)->diffForHumans($startTime, true)
+                                      //var_dump(Auth::check());       
+                                      //dd(Carbon\Carbon::now('Asia/Dhaka')->gt(Carbon\Carbon::parse($contest->start_time)));       
+                                    @endphp
+
+                                    @if(Carbon\Carbon::parse($current)->lt($startTime))
                                         <li><!-- start notification -->
                                             <a href="#">
-                                                <i class="fa fa-users text-aqua"></i>{{ dd(App\Http\Controllers\HomeController::notify())}}
+                                                <i class="fa fa-info text-aqua"></i>
+                                                {{$contest->title}} is starting in {{ $differ }}
+
                                             </a>
                                         </li><!-- end notification -->
+                                    @else
+                                    <li><!-- start notification -->
+                                            <a href="#">
+                                                <i class="fa fa-info text-aqua"></i>
+                                                No new notification
+
+                                            </a>
+                                        </li><!-- end notification -->
+                                        @php
+                                        break;
+                                        @endphp
+                                    @endif
+                                    @endforeach
                                     </ul>
                                 </li>
 

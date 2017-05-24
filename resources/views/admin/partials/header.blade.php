@@ -18,26 +18,6 @@
                     <ul class="nav navbar-nav">
                     <li><a href="/" class="btn btn-flat bg-red">CodeEra Home</a></li>
 
-                        <!-- Notifications Menu -->
-                        <li class="dropdown notifications-menu">
-                            <!-- Menu toggle button -->
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-bell-o"></i>
-                                <span class="label label-warning">1</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <!-- Inner Menu: contains the notifications -->
-                                    <ul class="menu">
-                                        <li><!-- start notification -->
-                                            <a href="#">
-                                                <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                            </a>
-                                        </li><!-- end notification -->
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
 
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">

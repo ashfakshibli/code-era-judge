@@ -29,7 +29,7 @@
       <div class="box box-warning">
         <div class="box-header with-border">
           <div class="col-md-4">
-            <h3>{{ $contestData->title }}</h3>
+            <h3>{{ $contestData->title }}</h3>(Ranking)
           </div>
           <div class="col-md-4 pull-right">
             <button type="button" class="btn btn-flat btn-info margin">Solved problem</button>

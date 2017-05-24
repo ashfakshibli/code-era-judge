@@ -34,7 +34,7 @@
                               <th style="width: 40%">Contest Title</th>
                               <th style="width: 15%">Start Time</th>
                               <th style="width: 10%">Duration</th>
-                              <th style="width: 10%">Problem Added</th>
+                              
                               <th style="width: 25%">Options</th>
                             </tr>
                             </thead>
@@ -47,7 +47,7 @@
                                   <td> {{ Carbon\Carbon::parse($contest->start_time)->format('d-F-Y  H:i') }}</td>
                                   <td> {{ Carbon\Carbon::parse($contest->start_time)->diffForHumans(Carbon\Carbon::parse($contest->end_time), true) }} 
                                   </td>
-                                  <td> {{ count($contest->problems) }}</td>
+                                
                                   <td>
                                     <a href={{ url('problem/add/'.$contest->id)}} class="btn bg-olive btn-flat tbl">Add Problem</a>
                                     <a href={{ url('contest/edit/'.$contest->id)}} class="btn bg-orange btn-flat tbl">Edit</a>
@@ -65,7 +65,7 @@
                               <th style="width: 40%">Contest Title</th>
                               <th style="width: 15%">Start Time</th>
                               <th style="width: 10%">Duration</th>
-                              <th style="width: 10%">Problem Added</th>
+                              
                               <th style="width: 25%">Options</th>
                             </tr>
                             </tfoot>

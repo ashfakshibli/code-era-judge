@@ -29,6 +29,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = User::findOrFail(Auth::user()->id);
+        $enrolled = $user->contest;
+
+        //dd($enrolled);
+
+
         return view('contestant.profile');
     }
 
@@ -101,8 +107,9 @@ class HomeController extends Controller
 
     public static function notify()
     {
-        $user_contest = Auth::user()->with('contest');
+        $user = User::findOrFail(Auth::user()->id);
+        $enrolled = $user->contest;
 
-        return $user_contest;
+        return $enrolled;
     }
 }

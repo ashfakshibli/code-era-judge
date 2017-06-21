@@ -31,12 +31,14 @@ class CreateContestTest extends IntegrationTest
             ->type('21/06/2017 0:00 - 25/06/2017 23:59','start_end_time')
             ->type('Test Contest Description','description')
             ->press('Create')
-            ->see('The contest has been created')
-            ->type('Test Problem', 'title')
-            ->type('Test Problem Description','description')
-            ->type('Test Input','input')
-            ->type('Test Output','output')
-            ->press('Create')
+            ->see('Add Problem')
+            ->submitForm('Create', [
+            	'title' => 'Test Problem',
+            	'description' => 'Test Problem Description',
+            	'input' => 'Test Input',
+            	'output' => 'Test Output',
+
+            	])
             ->see('Problem added to the contest');
     }
 }

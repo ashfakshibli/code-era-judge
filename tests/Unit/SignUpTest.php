@@ -25,7 +25,7 @@ class SignUpTest extends IntegrationTest
             ->type('654321', 'password_confirmation')
             ->press('Register')
             ->see('ABCD')
-            ->onPage('/home');
+            ->onPage('/register');
 
     }
 }

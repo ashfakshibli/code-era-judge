@@ -60,7 +60,9 @@
 
                 </div>
               </div>
+            </div>
               <!-- /.col -->
+
 
               <div class="col-md-12">
                 <div class="form-group">
@@ -70,11 +72,11 @@
                 <!-- /.form group -->
               </div>
               <!-- /.col-->
-
+            <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Sample Input:</label>
-                    <textarea id="sample_input" name="input" class="textarea input" placeholder="Place Sample Input" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <textarea id="input" name="input" class="textarea input" placeholder="Place Sample Input" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
                 <!-- /.form group -->
               </div>
@@ -83,7 +85,7 @@
               <div class="col-md-6">
                 <div class="form-group"> 
                   <label>Sample Output:</label>
-                    <textarea id="sample_output" name="output" class="textarea input" placeholder="Place Sample Output" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <textarea id="output" name="output" class="textarea output" placeholder="Place Sample Output" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
                 <!-- /.form group -->
               </div>

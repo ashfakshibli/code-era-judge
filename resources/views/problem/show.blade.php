@@ -116,7 +116,7 @@
 
           @if(Carbon\Carbon::parse($time)->between($start, $end))
             <div class="col-md-12">
-              <button type="button" class="btn bg-orange btn-flat center-block" data-toggle="modal" data-target="#inputModal" data-whatever="">Submit Output</button>
+              <a name="submit_output" type="button" class="btn bg-orange btn-flat center-block" data-toggle="modal" data-target="#inputModal" data-whatever="">Submit Output</a>
             </div>
           @endif
             <!-- /.col-->

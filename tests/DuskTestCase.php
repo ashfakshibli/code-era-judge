@@ -2,12 +2,13 @@
 
 namespace Tests;
 
-/**
- *
- */
-class DuskTestCase
-{
+//use Laracasts\Integrated\Extensions\Laravel as IntegrationTest;
 
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+
+abstract class DuskTestCase extends BaseTestCase
+{
+    use CreatesApplication;
     /**
      * Prepare for Dusk test execution.
      *
@@ -16,7 +17,7 @@ class DuskTestCase
      */
     public static function prepare()
     {
-        static::startChromeDriver();
+        // static::startChromeDriver();
     }
 
     /**
@@ -27,7 +28,7 @@ class DuskTestCase
     protected function driver()
     {
         return RemoteWebDriver::create(
-            'http://localhost:9515', DesiredCapabilities::phantomjs()
+            'http://localhost:9515', DesiredCapabilities::chrome()
         );
     }
 

@@ -74,16 +74,16 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Sample Input:</label>
-                    <textarea name="input" class="textarea" placeholder="Place Sample Input" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <textarea id="sample_input" name="input" class="textarea input" placeholder="Place Sample Input" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
                 <!-- /.form group -->
               </div>
               <!-- /.col-->
 
               <div class="col-md-6">
-                <div class="form-group">
+                <div class="form-group"> 
                   <label>Sample Output:</label>
-                    <textarea name="output" class="textarea" placeholder="Place Sample Output" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                    <textarea id="sample_output" name="output" class="textarea input" placeholder="Place Sample Output" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
                 <!-- /.form group -->
               </div>

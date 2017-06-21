@@ -1,8 +1,13 @@
     <!-- Main content -->
     <section class="content">
-
+      
       @foreach($problems as $problem)
-        @if( Carbon\Carbon::now('Asia/Dhaka')->gt(Carbon\Carbon::parse($problem->contest['end_time'])) )
+      @php
+        $now = Carbon\Carbon::now('Asia/Dhaka');
+        $end = Carbon\Carbon::parse($problem->contest['end_time']);
+
+      @endphp
+        @if( Carbon\Carbon::parse($now)->gt($end))
         <div class="col-lg-{{$column}}">
           <!-- small box -->
           @if(($loop->iteration)%2 == 0)

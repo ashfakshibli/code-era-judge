@@ -4,10 +4,6 @@ namespace Tests\Unit;
 
 use Laracasts\Integrated\Extensions\Goutte as IntegrationTest;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-
 class CreateContestTest extends IntegrationTest
 {
 	protected $baseUrl = 'http://localhost:8000';

@@ -50,10 +50,15 @@ class ContestController extends Controller
         $this->validator($inputs)->validate();
 
         $id = $this->create_data($inputs);
-
-        $this->showMessage('alert-success', 'Contest created!', 'The contest has been created. Add problems now.');
-
-        return redirect('/problem/add/'.$id);
+        if ($id) {
+        	$this->showMessage('alert-success', 'Contest created!', 'The contest has been created. Add problems now.');
+        	return redirect('/problem/add/'.$id);
+        }
+        else {
+        	$this->showMessage('alert-danger', 'Contest not created!', 'The contest creation failed. Please try after sometime.');
+			return redirect('/admin/contests');
+    	}
+        
     }
 
 

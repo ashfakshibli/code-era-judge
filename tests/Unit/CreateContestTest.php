@@ -31,8 +31,8 @@ class CreateContestTest extends IntegrationTest
             ->submitForm('Create', [
             	'title' => 'Test Problem',
             	'description' => 'Test Problem Description',
-            	'input' => 'Test Input',
-            	'output' => 'Test Output',
+            	//'input' => 'Test Input',
+            	//'output' => 'Test Output',
 
             	])
             ->see('Problem added to the contest');

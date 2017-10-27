@@ -61,6 +61,7 @@ class HomeController extends Controller
         return view('auth.passwords.change_password');
     }
 
+    //BPT tested
     public function passwordChange(Request $request)
     {
 
@@ -76,9 +77,17 @@ class HomeController extends Controller
 
             ])->save();
 
-        ContestController::showMessage('alert-success','Success!', 'Password Change Successfully' );
+        if(!$error){
+            ContestController::showMessage('alert-success','Success!', 'Password Change Successfully' );
+            return redirect('/home');
+        }
+        else{
+            return back();
+        }
 
-        return redirect('/home');
+        
+
+      
     }
 
 
